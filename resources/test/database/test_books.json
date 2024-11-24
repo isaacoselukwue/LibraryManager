@@ -1,0 +1,14 @@
+[
+    {
+        "Author": "Test Author",
+        "BookId": 1,
+        "Categories": [],
+        "DateCreated": 1732306616,
+        "DateUpdated": 1732306616,
+        "Isbn": "123-456",
+        "Name": "Test Book",
+        "NoOfCopies": 6,
+        "Publisher": "Test Publisher",
+        "Status": 1
+    }
+]
