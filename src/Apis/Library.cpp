@@ -2,20 +2,26 @@
 
 #include "../Interfaces/Books.hpp"
 #include "../Interfaces/Categories.hpp"
+#include "../Interfaces/Users.hpp"
 #include "../Tests/UnitTests/BookTests.hpp"
 #include "../Tests/UnitTests/CategoryTests.hpp"
+#include "../Tests/UnitTests/UserTests.hpp"
 
 void RunUnitTests() {
     BookTests bookTests;
     CategoryTests categoryTests;
+    UserTests userTests;
     
     std::cout << "Running Unit Tests...\n\n";
 
     std::cout << "\nCategory Tests:\n";
     categoryTests.RunAllTests();
     
-    std::cout << "Book Tests:\n";
+    std::cout << "\nBook Tests:\n";
     bookTests.RunAllTests();
+
+    std::cout << "\nUser Tests:\n";
+    userTests.RunAllTests();
 }
 
 int main(int argc, char* argv[])
