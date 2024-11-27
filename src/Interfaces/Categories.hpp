@@ -30,6 +30,7 @@ private:
     std::string filename;
     void SaveToFile(const std::vector<CategoryDto>& categories) const;
     std::vector<CategoryDto> LoadFromFile() const;
+    int GetNextCategoryId() const;
 };
 
 #endif

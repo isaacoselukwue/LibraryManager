@@ -41,6 +41,7 @@ private:
 	std::string filename;
 	void SaveToFile(const std::vector<BooksDto>& books) const;
 	std::vector<BooksDto> LoadFromFile() const;
+    int GetNextBookId() const;
 };
 
 #endif

@@ -4,7 +4,7 @@
         "Address": "",
         "BorrowedBooks": [],
         "CreatedBy": "System",
-        "CreatedDate": 1732652511,
+        "CreatedDate": 1732733802,
         "Email": "john.doe@test.com",
         "FirstName": "Jane",
         "LastName": "Doe",
@@ -13,28 +13,28 @@
         "ReturnedBooks": [
             "BOOK-001"
         ],
-        "Status": 3,
+        "Status": 1,
         "Type": 2,
-        "UpdatedBy": "Admin",
-        "UpdatedDate": 1732652511,
+        "UpdatedBy": "",
+        "UpdatedDate": 1732733802,
         "UserId": 1
     },
     {
-        "AccessCount": 1,
+        "AccessCount": 5,
         "Address": "",
         "BorrowedBooks": [],
         "CreatedBy": "",
-        "CreatedDate": 1732652511,
+        "CreatedDate": 1732733802,
         "Email": "test10@test.com",
         "FirstName": "Test",
         "LastName": "User",
-        "PasswordHash": "password123",
+        "PasswordHash": "089c2b731aaddf7c",
         "PhoneNumber": "",
         "ReturnedBooks": [],
         "Status": 1,
         "Type": 0,
         "UpdatedBy": "",
-        "UpdatedDate": 1732652511,
-        "UserId": 10
+        "UpdatedDate": 1732733802,
+        "UserId": 2
     }
 ]

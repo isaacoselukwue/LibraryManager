@@ -24,6 +24,16 @@ Books::Books(const std::string& fname) : filename(fname) {}
 
 Books::~Books() {}
 
+int Books::GetNextBookId() const {
+    auto books = LoadFromFile();
+    if (books.empty()) return 1;
+    
+    return std::max_element(books.begin(), books.end(),
+        [](const BooksDto& a, const BooksDto& b) { 
+            return a.BookId < b.BookId; 
+        })->BookId + 1;
+}
+
 bool Books::AddBook(BooksDto book) {
     try {
         int fd = open(filename.c_str(), O_RDWR);
@@ -33,6 +43,7 @@ bool Books::AddBook(BooksDto book) {
         flock(fd, LOCK_EX);
         
         auto books = LoadFromFile();
+        book.BookId = GetNextBookId();
         book.DateCreated = std::time(nullptr);
         book.DateUpdated = std::time(nullptr);
         books.push_back(book);

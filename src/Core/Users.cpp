@@ -14,6 +14,7 @@
 using json = nlohmann::json;
 namespace fs = std::filesystem;
 
+
 Users::Users() {
     filename = "./resources/database/users.json";
     fs::create_directories("./resources/database");
@@ -102,6 +103,16 @@ std::string Users::Login(const std::string& email, const std::string& password) 
     }
 }
 
+int Users::GetNextUserId() const {
+    auto users = LoadFromFile();
+    if (users.empty()) return 1;
+    
+    return std::max_element(users.begin(), users.end(),
+        [](const UserDto& a, const UserDto& b) { 
+            return a.UserId < b.UserId; 
+        })->UserId + 1;
+}
+
 bool Users::AddUser(UserDto user) {
     try {
         if (EmailExists(user.Email)) return false;
@@ -112,6 +123,7 @@ bool Users::AddUser(UserDto user) {
         flock(fd, LOCK_EX);
         
         auto users = LoadFromFile();
+        user.UserId = GetNextUserId();
         user.CreatedDate = std::time(nullptr);
         user.UpdatedDate = std::time(nullptr);
         user.PasswordHash = Utils::CreateSaltedHash(user.Email, user.PasswordHash);

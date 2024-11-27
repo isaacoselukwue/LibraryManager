@@ -24,6 +24,16 @@ Categories::Categories(const std::string& fname) : filename(fname) {}
 
 Categories::~Categories() {}
 
+int Categories::GetNextCategoryId() const {
+    auto categories = LoadFromFile();
+    if (categories.empty()) return 1;
+    
+    return std::max_element(categories.begin(), categories.end(),
+        [](const CategoryDto& a, const CategoryDto& b) { 
+            return a.CategoryId < b.CategoryId; 
+        })->CategoryId + 1;
+}
+
 bool Categories::AddCategory(CategoryDto category) {
     try {
         std::cout << "Attempting to open file: " << filename << std::endl;
@@ -44,7 +54,7 @@ bool Categories::AddCategory(CategoryDto category) {
         
         std::cout << "File locked. Loading existing categories..." << std::endl;
         auto categories = LoadFromFile();
-        
+        category.CategoryId = GetNextCategoryId();
         std::cout << "Adding new category..." << std::endl;
         categories.push_back(category);
         

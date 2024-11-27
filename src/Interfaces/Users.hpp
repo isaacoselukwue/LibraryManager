@@ -58,6 +58,7 @@ class Users {
         std::vector<UserDto> LoadFromFile() const;
         bool UserExists(int userId) const;
         bool EmailExists(const std::string& email) const;
+        int GetNextUserId() const;
 };
 
 #endif
