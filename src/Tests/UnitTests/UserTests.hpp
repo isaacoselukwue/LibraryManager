@@ -53,7 +53,7 @@ private:
         
         // Setup test user
         UserDto user{};
-        user.UserId = 10;
+        user.UserId = 2;
         user.Email = "test10@test.com";
         user.FirstName = "Test";
         user.LastName = "User";
@@ -87,9 +87,10 @@ private:
         assert(result.find("Account locked") != std::string::npos && "Account should be locked after 5 attempts");
         
         // Test successful login resets access count
-        auto currentUser = users.GetUserById(10);
+        auto currentUser = users.GetUserByEmail(user.Email);
         currentUser.AccessCount = 0;
         users.UpdateUser(currentUser);
+        std::cout << "Current users details: " << currentUser.PasswordHash << std::endl;
         result = users.Login(user.Email, password);
         assert(result == "success" && "Login should succeed after reset");
         
@@ -105,7 +106,7 @@ private:
         result = users.Login(user.Email, password);
         assert(result.find("Account has been deleted") != std::string::npos && "Deleted account should not login");
         
-        currentUser = users.GetUserById(10);
+        currentUser = users.GetUserByEmail(user.Email);
         currentUser.Status = UserStatus::UserStatus_ACTIVE;
         users.UpdateUser(currentUser);
 

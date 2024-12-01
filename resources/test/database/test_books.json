@@ -3,12 +3,48 @@
         "Author": "Test Author",
         "BookId": 1,
         "Categories": [],
-        "DateCreated": 1732733802,
-        "DateUpdated": 1732733802,
+        "DateCreated": 1733060695,
+        "DateUpdated": 1733060695,
         "Isbn": "123-456",
         "Name": "Test Book",
         "NoOfCopies": 6,
         "Publisher": "Test Publisher",
+        "Status": 1
+    },
+    {
+        "Author": "J.K. Rowling",
+        "BookId": 2,
+        "Categories": [],
+        "DateCreated": 1733060695,
+        "DateUpdated": 1733060695,
+        "Isbn": "978-0590353427",
+        "Name": "Harry Potter and the Sorcerer's Stone",
+        "NoOfCopies": 5,
+        "Publisher": "Scholastic",
+        "Status": 1
+    },
+    {
+        "Author": "J.R.R. Tolkien",
+        "BookId": 3,
+        "Categories": [],
+        "DateCreated": 1733060695,
+        "DateUpdated": 1733060695,
+        "Isbn": "978-0547928227",
+        "Name": "The Hobbit",
+        "NoOfCopies": 3,
+        "Publisher": "Houghton Mifflin",
+        "Status": 1
+    },
+    {
+        "Author": "George Orwell",
+        "BookId": 4,
+        "Categories": [],
+        "DateCreated": 1733060695,
+        "DateUpdated": 1733060695,
+        "Isbn": "978-0451524935",
+        "Name": "1984",
+        "NoOfCopies": 4,
+        "Publisher": "Signet Classic",
         "Status": 1
     }
 ]

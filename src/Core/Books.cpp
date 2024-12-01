@@ -192,3 +192,114 @@ bool Books::AddBookCopies(int bookId, int copies) {
 bool Books::RemoveBookCopies(int bookId, int copies) {
     return AddBookCopies(bookId, -copies);
 }
+
+std::string Books::GetSoundex(const std::string& word) const {
+    if (word.empty()) return "";
+    
+    std::string result(4, '0');
+    result[0] = std::toupper(word[0]);
+    
+    const std::string mapping = "01230120022455012623010202";
+    int j = 1;
+    char last = '0';
+    
+    for (size_t i = 1; i < word.length() && j < 4; i++) {
+        char current = mapping[std::tolower(word[i]) - 'a'];
+        if (current != '0' && current != last) {
+            result[j++] = current;
+            last = current;
+        }
+    }
+    
+    return result;
+}
+
+double Books::CalculateNGramSimilarity(const std::string& s1, const std::string& s2, int n) const {
+    if (s1.empty() || s2.empty()) return 0.0;
+    
+    std::set<std::string> ngrams1, ngrams2;
+    
+    for (size_t i = 0; i <= s1.length() - n; i++)
+        ngrams1.insert(s1.substr(i, n));
+    for (size_t i = 0; i <= s2.length() - n; i++)
+        ngrams2.insert(s2.substr(i, n));
+    
+    int common = 0;
+    for (const auto& ngram : ngrams1) {
+        if (ngrams2.find(ngram) != ngrams2.end())
+            common++;
+    }
+    
+    return (2.0 * common) / (ngrams1.size() + ngrams2.size());
+}
+
+std::vector<std::string> Books::Tokenize(const std::string& text) const {
+    std::vector<std::string> tokens;
+    std::stringstream ss(text);
+    std::string token;
+    while (ss >> token) {
+        std::transform(token.begin(), token.end(), token.begin(), ::tolower);
+        tokens.push_back(token);
+    }
+    return tokens;
+}
+
+double Books::CalculateSearchScore(const BooksDto& book, const std::string& query) const {
+    auto queryTokens = Tokenize(query);
+    double score = 0.0;
+
+    std::string bookName = book.Name;
+    std::string bookAuthor = book.Author;
+    std::string bookPublisher = book.Publisher;
+    std::transform(bookName.begin(), bookName.end(), bookName.begin(), ::tolower);
+    std::transform(bookAuthor.begin(), bookAuthor.end(), bookAuthor.begin(), ::tolower);
+    std::transform(bookPublisher.begin(), bookPublisher.end(), bookPublisher.begin(), ::tolower);
+    
+    for (const auto& queryToken : queryTokens) {
+        // Exact match bonuses
+        if (bookName.find(queryToken) != std::string::npos) score += 1.0;
+        if (bookAuthor.find(queryToken) != std::string::npos) score += 0.8;
+        if (book.Isbn.find(queryToken) != std::string::npos) score += 1.0;
+        if (bookPublisher.find(queryToken) != std::string::npos) score += 0.5;
+        
+        // Fuzzy matches
+        double titleScore = CalculateNGramSimilarity(queryToken, bookName, 2) * 0.6;
+        double authorScore = CalculateNGramSimilarity(queryToken, bookAuthor, 2) * 0.4;
+        double publisherScore = CalculateNGramSimilarity(queryToken, bookPublisher, 2) * 0.2;
+        
+        // Phonetic matching
+        if (GetSoundex(queryToken) == GetSoundex(bookName) ||
+            GetSoundex(queryToken) == GetSoundex(bookAuthor))
+            score += 0.3;
+            
+        score += titleScore + authorScore + publisherScore;
+    }
+    
+    return score / queryTokens.size();
+}
+
+std::vector<Books::SearchResult> Books::SearchBooks(const std::string& query, size_t limit) const {
+    std::vector<SearchResult> results;
+    auto books = LoadFromFile();
+    
+    std::cout << "Searching for: " << query << std::endl;
+    std::cout << "Number of books in database: " << books.size() << std::endl;
+    
+    for (const auto& book : books) {
+        double score = CalculateSearchScore(book, query);
+        std::cout << "Score for book '" << book.Name << "': " << score << std::endl;
+        
+        if (score > 0.1) {
+            results.push_back({book, score});
+        }
+    }
+    
+    std::sort(results.begin(), results.end());
+    
+    if (results.size() > limit) {
+        results.resize(limit);
+    }
+    
+    std::cout << "Found " << results.size() << " results" << std::endl;
+    return results;
+}
