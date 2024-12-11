@@ -1,0 +1,12 @@
+[
+    {
+        "ActualReturnDate": 1733848815,
+        "BookId": 1,
+        "BorrowDate": 1733848815,
+        "DueDate": 1734453615,
+        "ReturnDate": 1733848815,
+        "Status": 1,
+        "TransactionId": 1,
+        "UserId": 1
+    }
+]

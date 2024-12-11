@@ -6,11 +6,13 @@
 #include "../Tests/UnitTests/BookTests.hpp"
 #include "../Tests/UnitTests/CategoryTests.hpp"
 #include "../Tests/UnitTests/UserTests.hpp"
+#include "../Tests/UnitTests/TransactionTests.hpp"
 
 void RunUnitTests() {
     BookTests bookTests;
     CategoryTests categoryTests;
     UserTests userTests;
+    TransactionTests transactionTests;
     
     std::cout << "Running Unit Tests...\n\n";
 
@@ -22,6 +24,9 @@ void RunUnitTests() {
 
     std::cout << "\nUser Tests:\n";
     userTests.RunAllTests();
+
+    std::cout << "\nTransaction Tests:\n";
+    transactionTests.RunAllTests();
 }
 
 int main(int argc, char* argv[])
