@@ -57,6 +57,10 @@
         "forward_list": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "condition_variable": "cpp",
+        "mutex": "cpp"
     }
 }

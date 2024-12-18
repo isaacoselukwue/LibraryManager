@@ -1,6 +1,7 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -I$(SRC_DIR)
+CXXFLAGS = -std=c++17 -Wall -Wextra -I$(SRC_DIR) -pthread
+LDFLAGS = -pthread
 
 # Directories
 SRC_DIR = src
@@ -11,12 +12,16 @@ RESOURCES_DIR = resources/database
 # Source files
 CORE_SRCS = $(SRC_DIR)/Core/Books.cpp $(SRC_DIR)/Core/Categories.cpp $(SRC_DIR)/Core/Users.cpp $(SRC_DIR)/Core/Transactions.cpp
 LIBRARY_SRCS = $(SRC_DIR)/Apis/Library.cpp
+MANAGER_SRCS = $(SRC_DIR)/Apis/LibraryManager.cpp
+SERVER_SRCS = $(SRC_DIR)/Network/LibraryServer.cpp
+CLIENT_SRCS = $(SRC_DIR)/Network/LibraryClient.cpp
 
 # Output executable
 LIBRARY_EXE = $(BUILD_DIR)/library
+MANAGER_EXE = $(BUILD_DIR)/librarymanager
 
 # Default target
-all: setup $(LIBRARY_EXE)
+all: setup $(LIBRARY_EXE) $(MANAGER_EXE)
 
 setup:
 	mkdir -p $(BUILD_DIR)
@@ -24,7 +29,9 @@ setup:
 	mkdir -p $(INCLUDE_DIR)/nlohmann
 	wget -O $(INCLUDE_DIR)/nlohmann/json.hpp https://github.com/nlohmann/json/releases/download/v3.11.2/json.hpp
 
-$(LIBRARY_EXE): $(LIBRARY_SRCS) $(CORE_SRCS)
+$(LIBRARY_EXE): $(LIBRARY_SRCS) $(CORE_SRCS) $(SERVER_SRCS) $(CLIENT_SRCS)
+	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@ $(LDFLAGS)
+$(MANAGER_EXE): $(MANAGER_SRCS) $(CORE_SRCS)
 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@
 
 clean:
