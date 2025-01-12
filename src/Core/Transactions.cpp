@@ -36,6 +36,7 @@ std::string Transactions::AddTransaction(TransactionsDto transaction) {
         transaction.TransactionId = GetNextTransactionId();
         transaction.BorrowDate = std::time(nullptr);
         transaction.CreatedDate = std::time(nullptr);
+        transaction.DueDate = std::time(nullptr) + (5 * 24 * 60 * 60);
         
         transactions.push_back(transaction);
         SaveToFile(transactions);
@@ -139,6 +140,36 @@ std::vector<TransactionsDto> Transactions::GetTransactionsByBookId(const int& bo
     std::copy_if(transactions.begin(), transactions.end(), std::back_inserter(result),
         [&bookId](const TransactionsDto& t) { return t.BookId == bookId; });
     return result;
+}
+
+TransactionsDto Transactions::GetBorrowedTransactionsByUserAndBookId(const int& userId, const int& bookId) {
+    auto transactions = LoadFromFile();
+    auto it = std::find_if(transactions.begin(), transactions.end(),
+        [&](const TransactionsDto& t) { 
+            return t.UserId == userId && 
+                   t.BookId == bookId && 
+                   t.Status == BorrowStatus::BorrowStatus_BORROWED;
+        });
+        
+    if (it != transactions.end()) {
+        return *it;
+    }
+    return TransactionsDto{};
+}
+
+TransactionsDto Transactions::GetReturnedTransactionsByUserAndBookId(const int& userId, const int& bookId) {
+    auto transactions = LoadFromFile();
+    auto it = std::find_if(transactions.begin(), transactions.end(),
+        [&](const TransactionsDto& t) { 
+            return t.UserId == userId && 
+                   t.BookId == bookId && 
+                   t.Status == BorrowStatus::BorrowStatus_RETURNED;
+        });
+        
+    if (it != transactions.end()) {
+        return *it;
+    }
+    return TransactionsDto{};
 }
 
 std::vector<TransactionsDto> Transactions::GetTransactionsByDate(

@@ -18,10 +18,10 @@ CLIENT_SRCS = $(SRC_DIR)/Network/LibraryClient.cpp
 
 # Output executable
 LIBRARY_EXE = $(BUILD_DIR)/library
-MANAGER_EXE = $(BUILD_DIR)/librarymanager
+#MANAGER_EXE = $(BUILD_DIR)/librarymanager
 
 # Default target
-all: setup $(LIBRARY_EXE) $(MANAGER_EXE)
+all: setup $(LIBRARY_EXE) #$(MANAGER_EXE)
 
 setup:
 	mkdir -p $(BUILD_DIR)
@@ -29,10 +29,10 @@ setup:
 	mkdir -p $(INCLUDE_DIR)/nlohmann
 	wget -O $(INCLUDE_DIR)/nlohmann/json.hpp https://github.com/nlohmann/json/releases/download/v3.11.2/json.hpp
 
-$(LIBRARY_EXE): $(LIBRARY_SRCS) $(CORE_SRCS) $(SERVER_SRCS) $(CLIENT_SRCS)
+$(LIBRARY_EXE): $(LIBRARY_SRCS) $(CORE_SRCS) $(SERVER_SRCS) $(CLIENT_SRCS) $(MANAGER_SRCS)
 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@ $(LDFLAGS)
-$(MANAGER_EXE): $(MANAGER_SRCS) $(CORE_SRCS)
-	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@
+# $(MANAGER_EXE): $(MANAGER_SRCS) $(CORE_SRCS)
+# 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@
 
 clean:
 	rm -rf $(BUILD_DIR)

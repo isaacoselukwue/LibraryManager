@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
             if (client.ConnectToServer()) {
                 std::string request;
                 while (true) {
-                    std::cout << "Enter a message to send to the server (or 'exit' to disconnect): ";
+                    std::cout << "Enter a command (1=Login, 2=Register, exit=Exit): ";
                     std::getline(std::cin, request);
                     if (request == "exit") {
                         client.CloseConnection();

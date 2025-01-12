@@ -14,7 +14,7 @@
         "Status": 1,
         "Type": 2,
         "UpdatedBy": "",
-        "UpdatedDate": 1733935914,
+        "UpdatedDate": 1736698637,
         "UserId": 1
     },
     {
@@ -23,7 +23,7 @@
         "BorrowedBooks": [],
         "CreatedBy": "",
         "CreatedDate": 1733936021,
-        "Email": "street",
+        "Email": "street@lincs.com",
         "FirstName": "isaac",
         "LastName": "Bomo",
         "PasswordHash": "d890bca570fab65e",
@@ -32,7 +32,7 @@
         "Status": 1,
         "Type": 2,
         "UpdatedBy": "",
-        "UpdatedDate": 1733936021,
+        "UpdatedDate": 1736536212,
         "UserId": 2
     },
     {
@@ -52,5 +52,63 @@
         "UpdatedBy": "",
         "UpdatedDate": 1733936216,
         "UserId": 3
+    },
+    {
+        "AccessCount": 0,
+        "Address": "hun tan villa",
+        "BorrowedBooks": [],
+        "CreatedBy": "",
+        "CreatedDate": 1734549787,
+        "Email": "hum.ti@ti.com",
+        "FirstName": "Hungir",
+        "LastName": "Tan",
+        "PasswordHash": "393bae9150a46828",
+        "PhoneNumber": "08174204424",
+        "ReturnedBooks": [
+            "2",
+            "3",
+            "3"
+        ],
+        "Status": 1,
+        "Type": 0,
+        "UpdatedBy": "",
+        "UpdatedDate": 1736704537,
+        "UserId": 4
+    },
+    {
+        "AccessCount": 0,
+        "Address": "3 Lombard St. East, Dublin 2, ROI",
+        "BorrowedBooks": [],
+        "CreatedBy": "",
+        "CreatedDate": 1736703119,
+        "Email": "paterson@shortbreads.com",
+        "FirstName": "Paterson",
+        "LastName": "Shortbread",
+        "PasswordHash": "eabb61ddf89049d8",
+        "PhoneNumber": "+440800591886",
+        "ReturnedBooks": [],
+        "Status": 1,
+        "Type": 2,
+        "UpdatedBy": "",
+        "UpdatedDate": 1736703119,
+        "UserId": 5
+    },
+    {
+        "AccessCount": 0,
+        "Address": "2 Bob street, Jamaica",
+        "BorrowedBooks": [],
+        "CreatedBy": "",
+        "CreatedDate": 1736703210,
+        "Email": "bob@marley.com",
+        "FirstName": "Bob",
+        "LastName": "Marley",
+        "PasswordHash": "c51b7e9ef2cad711",
+        "PhoneNumber": "1234567890",
+        "ReturnedBooks": [],
+        "Status": 1,
+        "Type": 2,
+        "UpdatedBy": "",
+        "UpdatedDate": 1736703241,
+        "UserId": 6
     }
 ]

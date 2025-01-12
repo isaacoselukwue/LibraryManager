@@ -55,6 +55,7 @@ bool Categories::AddCategory(CategoryDto category) {
         std::cout << "File locked. Loading existing categories..." << std::endl;
         auto categories = LoadFromFile();
         category.CategoryId = GetNextCategoryId();
+        category.DateCreated = std::time(nullptr);
         std::cout << "Adding new category..." << std::endl;
         categories.push_back(category);
         

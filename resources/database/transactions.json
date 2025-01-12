@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "ActualReturnDate": 1736532901,
+        "BookId": 2,
+        "BorrowDate": 1736373892,
+        "DueDate": 140702421931452,
+        "ReturnDate": 1736532901,
+        "Status": 1,
+        "TransactionId": 1,
+        "UserId": 4
+    },
+    {
+        "ActualReturnDate": 1736533009,
+        "BookId": 3,
+        "BorrowDate": 1736532377,
+        "DueDate": 1736964377,
+        "ReturnDate": 1736533009,
+        "Status": 1,
+        "TransactionId": 2,
+        "UserId": 4
+    },
+    {
+        "ActualReturnDate": 1736533617,
+        "BookId": 3,
+        "BorrowDate": 1736533592,
+        "DueDate": 1736965592,
+        "ReturnDate": 1736533617,
+        "Status": 1,
+        "TransactionId": 3,
+        "UserId": 4
+    }
+]

@@ -38,6 +38,8 @@ class Transactions
         std::vector<TransactionsDto> GetTransactionsByDateAndUserId(const std::time_t& startDate, const std::time_t& endDate, const int& userId);
         std::vector<TransactionsDto> GetTransactionsByDueDate(const std::time_t& startDate, const std::time_t& endDate);
         std::vector<TransactionsDto> GetTransactionsByDueDateAndUserId(const std::time_t& startDate, const std::time_t& endDate, const int& userId);
+        TransactionsDto GetBorrowedTransactionsByUserAndBookId(const int& userId, const int& bookId);
+        TransactionsDto GetReturnedTransactionsByUserAndBookId(const int& userId, const int& bookId);
 
     private:
         std::string filename;

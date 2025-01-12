@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "Author": "Isaac Helge Tidderman",
+        "BookId": 2,
+        "Categories": [],
+        "DateCreated": 1736373470,
+        "DateUpdated": 1736532901,
+        "Isbn": "1234567",
+        "Name": "CS Fundamentals",
+        "NoOfCopies": 6,
+        "Publisher": "Isaac Books",
+        "Status": 1
+    },
+    {
+        "Author": "Tite Kubo",
+        "BookId": 3,
+        "Categories": [],
+        "DateCreated": 1736373873,
+        "DateUpdated": 1736533617,
+        "Isbn": "234567",
+        "Name": "Bankai: A holistic Approach",
+        "NoOfCopies": 10,
+        "Publisher": "Aniplex",
+        "Status": 1
+    }
+]

@@ -9,6 +9,12 @@ LibraryServer::LibraryServer(int port) {
     if (serverSocket < 0) {
         throw std::runtime_error("Failed to create socket");
     }
+
+    int opt = 1;
+    if (setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt)) < 0) {
+        close(serverSocket);
+        throw std::runtime_error("Failed to set socket options");
+    }
     
     sockaddr_in serverAddr{};
     serverAddr.sin_family = AF_INET;
@@ -66,7 +72,8 @@ void LibraryServer::HandleClient(int clientSocket) {
 
 void LibraryServer::ProcessRequest(int clientSocket, const std::string& request) {
     std::cout << "Received request: " << request << std::endl;
-    std::string response = "Server received: " + request;
+    // std::string response = "Server received: " + request;
     //libraryManager.
+    std::string response = libraryManager.ProcessCommand(clientSocket, request);
     send(clientSocket, response.c_str(), response.length(), 0);
 }
