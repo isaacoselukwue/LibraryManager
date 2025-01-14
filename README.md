@@ -28,7 +28,7 @@ A C++ based library management system that provides both server and client funct
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone 'https://github.com/isaacoselukwue/LibraryManager.git'
 cd LibManager
 
 # Build the application
