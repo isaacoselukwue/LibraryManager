@@ -89,11 +89,4 @@ enum class MenuType{
     BOOK_MANAGEMENT
 };
 
-struct AuditLogDto
-{
-    int AuditLogId;
-    std::string Action;
-    std::string Description;
-    std::time_t DateCreated;
-};
 #endif

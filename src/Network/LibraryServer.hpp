@@ -10,6 +10,8 @@
 #include <arpa/inet.h>
 
 #include "../Interfaces/LibraryManager.hpp"
+#include "../Interfaces/Audits.hpp"
+#include "../Utils/AuditLogger.hpp"
 
 class LibraryServer {
 private:
@@ -17,6 +19,9 @@ private:
     std::vector<std::thread> clientThreads;
     bool running;
     LibraryManager libraryManager;
+
+    Audits audit;
+    AuditLogger auditLogger;
     
     void HandleClient(int clientSocket);
     void ProcessRequest(int clientSocket, const std::string& request);

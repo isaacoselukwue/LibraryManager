@@ -10,7 +10,7 @@ INCLUDE_DIR = include
 RESOURCES_DIR = resources/database
 
 # Source files
-CORE_SRCS = $(SRC_DIR)/Core/Books.cpp $(SRC_DIR)/Core/Categories.cpp $(SRC_DIR)/Core/Users.cpp $(SRC_DIR)/Core/Transactions.cpp
+CORE_SRCS = $(SRC_DIR)/Core/Books.cpp $(SRC_DIR)/Core/Categories.cpp $(SRC_DIR)/Core/Users.cpp $(SRC_DIR)/Core/Transactions.cpp $(SRC_DIR)/Core/Audits.cpp
 LIBRARY_SRCS = $(SRC_DIR)/Apis/Library.cpp
 MANAGER_SRCS = $(SRC_DIR)/Apis/LibraryManager.cpp
 SERVER_SRCS = $(SRC_DIR)/Network/LibraryServer.cpp
