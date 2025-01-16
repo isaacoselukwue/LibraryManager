@@ -28,5 +28,15 @@
         "Status": 1,
         "TransactionId": 3,
         "UserId": 4
+    },
+    {
+        "ActualReturnDate": 139693229756480,
+        "BookId": 3,
+        "BorrowDate": 1737031273,
+        "DueDate": 1737463273,
+        "ReturnDate": 140728775555720,
+        "Status": 0,
+        "TransactionId": 4,
+        "UserId": 6
     }
 ]

@@ -168,7 +168,7 @@ std::string LibraryManager::ProcessCommand(int clientId, const std::string& comm
                         if (session.user.Type != UserType::UserType_ADMIN) {
                             return "Access denied. Admin privileges required.";
                         }
-                        return HandleManageUsers(clientId);
+                        return HandleManageUsers();
 
                     case UserCommand::ACTIVATE_USER:
                         if (session.user.Type != UserType::UserType_ADMIN) {
@@ -592,8 +592,7 @@ std::string LibraryManager::HandleAddCategory(int clientId, const std::string& i
 }
 
 //add methods to manage users details disable account 
-std::string LibraryManager::HandleManageUsers(int clientId) {
-    auto& session = sessions[clientId];
+std::string LibraryManager::HandleManageUsers() {
     auto allUsers = users.GetAllUsers();
     
     std::stringstream ss;

@@ -54,7 +54,7 @@ public:
     std::string HandleAddCategory(int clientId, const std::string& categoryName);
     std::string ViewBorrowedBooks(int clientId);
     std::string ViewReturnedBooks(int clientId);
-    std::string HandleManageUsers(int clientId);
+    std::string HandleManageUsers();
     std::string HandleUserStatusChange(int clientId, const std::string& userId, UserStatus newStatus);
     std::string HandleUserTypeChange(int clientId, const std::string& userId, UserType newType);
     std::string HandleViewUserTransactions(int clientId, const std::string& userId);

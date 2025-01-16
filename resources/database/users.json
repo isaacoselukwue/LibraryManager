@@ -72,7 +72,7 @@
         "Status": 1,
         "Type": 0,
         "UpdatedBy": "",
-        "UpdatedDate": 1736704537,
+        "UpdatedDate": 1737031232,
         "UserId": 4
     },
     {
@@ -96,7 +96,9 @@
     {
         "AccessCount": 0,
         "Address": "2 Bob street, Jamaica",
-        "BorrowedBooks": [],
+        "BorrowedBooks": [
+            "3"
+        ],
         "CreatedBy": "",
         "CreatedDate": 1736703210,
         "Email": "bob@marley.com",
@@ -108,7 +110,7 @@
         "Status": 1,
         "Type": 2,
         "UpdatedBy": "",
-        "UpdatedDate": 1736709459,
+        "UpdatedDate": 1737031273,
         "UserId": 6
     }
 ]
